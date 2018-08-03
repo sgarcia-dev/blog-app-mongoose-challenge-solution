@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: nwwvjKHAERTg5X+//FrLi/cO3GYU1mBP3NZ307grhJe5rquvj4TCADb0RF+eox+Fo81aOkzTq/5ev2CygSuWlKvTm16iNH6kcPv6pqvVr5tm90HRypum/HxHelJ9pKiKa6py332V6iIMmywcu+XjFyH2DSlTnfD9V/Na46DCumj0fW7YlFrxOGjBaUAFDnnoPlmt+CgmWPW2GyFuw38TiRArQdBBnXr5Aiu0dWsi1snpxmh5jr4sCxQPJ3a0R/riFJQl7zOR1tNsegBm0O22xRdUCVGTCTYIO7EGIo8paOPjS4Cg8hCmqUPXvE1prglVziwnI62OMMAU7ynMIYS9Owl3zXAoLCZuWbPYLtjZAdljNBw6D9WNvttcW/+ikSQy785kU/hKQaeHhfIe5izTRwf0elhTPfKvWXyvD3gpTeMLLozxpbZUilY0DiNdbj63kLyLNiazrbwUsjRP18YDGpCS4Kuc7WQfuNg/tUMK8Q4SmCEXswA+KMidUy7pYHWBtUPfPxofAfTzfIPKYN/uWO5W6qcE31pvC+6WLHexYCzI1rmbNRr1p7Me5ADiju9Vxn+hize4FIiaZ6M92ql0pQAGfLddBnyXYxGRzW9Fqz4+lSh/TnV+tae93SU9jXJnBMOAZagjR7wtZvqqU5Js/IDdm8nIJsIgl/wWWQ+Ii64=
+  app: 'no'
+  on:
+    repo: bryanspearman/blog-app-mongoose-challenge-solution
