@@ -26,14 +26,19 @@ function generateBlogData() {
             firstName: faker.name.firstName(),
             lastName: faker.name.lastName()
         },
-        content: faker.lorem.paragraphs(4, `<p>&nbsp;</p>`),
-        created: faker.date.past()
+        content: faker.lorem.paragraphs()
     };
 }
 
-function tearDownDB() {
-    return mongoose.connection.dropDatabase();
+function tearDownDb() {
+    return new Promise((resolve, reject) => {
+        console.warn('Deleting database');
+        mongoose.connection.dropDatabase()
+            .then(result => resolve(result))
+            .catch(err => reject(err));
+    });
 }
+
 
 describe("API instructions", function () {
     before(function () {
@@ -86,8 +91,7 @@ describe("GET endpoint test", function() {
                 expect(post).to.include.keys(
                     "title",
                     "author",
-                    "content",
-                    "created"
+                    "content"
                 );
             });
         resPost = res.body.posts[0];
@@ -97,8 +101,7 @@ describe("GET endpoint test", function() {
             expect(resPost.id).to.equal(post.id);
             expect(resPost.title).to.equal(post.title);
             expect(resPost.author).to.equal(post.author);
-            expect(resPost.content).to.equal(post.content);
-            expect(resPost.created).to.equal(post.created);    
+            expect(resPost.content).to.equal(post.content); 
         });
     });
 });
@@ -118,13 +121,11 @@ describe("POST test", function() {
             expect(res.body).to.include.keys(
                 "title",
                 "author",
-                "content",
-                "created"
+                "content"
             );
             expect(res.body.title).to.equal(newPost.title);
             expect(res.body.author).to.equal(newPost.author);
             expect(res.body.content).to.equal(newPost.content);
-            expect(res.body.created).to.equal(newPost.created);
             expect(res.body.id).to.not.be.null;
         });
     });
